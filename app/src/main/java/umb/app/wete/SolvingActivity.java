@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -26,7 +27,7 @@ public class SolvingActivity extends AppCompatActivity {
     private TextView name;
     private TextView question;
     private TextView result;
-    private EditText respone;
+    private EditText response;
 
     String URL = "http://192.168.1.31:8080/";
 
@@ -47,7 +48,7 @@ public class SolvingActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
         name = findViewById(R.id.name);
         question = findViewById(R.id.question);
-        respone = findViewById(R.id.response);
+        response = findViewById(R.id.response);
         result = findViewById(R.id.result);
 
         final Problem problem = new Problem();
@@ -67,12 +68,33 @@ public class SolvingActivity extends AppCompatActivity {
             confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                problem.setResolved(true);
-                UpdateResolved(problem.getId());
+                if (!response.getText().toString().equals("")) {
+                    String res = response.getText().toString().trim();
+                    Float floatRes = Float.parseFloat(res);
+                    Float floatSolution = Float.parseFloat(problem.getSolution().trim().replace(',', '.'));
+                    Toast.makeText(getApplicationContext(), "res: " + floatRes + " sol " + floatSolution, Toast.LENGTH_LONG).show();
+                    if (floatRes.equals(floatSolution)) {
+                        Toast.makeText(getApplicationContext(), "Správne", Toast.LENGTH_LONG).show();
+                        problem.setResolved(true);
+                        UpdateResolved(problem.getId());
+                        finish();
+                        Intent main = new Intent(getApplicationContext(), ProblemActivity.class);
+                        main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(main);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Nesprávne", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Nezadal si žiadnu odpoveď", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
-                Intent main = new Intent(getApplicationContext(), ProblemActivity.class);
-                main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(main);
             }
         });
     }
