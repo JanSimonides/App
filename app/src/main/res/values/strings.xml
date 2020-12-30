@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeTe</string>
+    <string name="start">Začať kurz</string>
+    <string name="solved">Vyriešené</string>
+    <string name="unsolved">Nevyriešené</string>
+    <string name="welcome">Vitajte v matematickom kurze</string>
+    <string name="reset">Vynulovať odpovede</string>
+    <string name="success">Odpovede boli vynulované</string>
+    <string name="back">Vráť sa do menu</string>
+    <string name="check">Skontroluj</string>
+</resources>
