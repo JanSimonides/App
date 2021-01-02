@@ -85,9 +85,8 @@ public class ProblemActivity extends AppCompatActivity {
                 Type type = new TypeToken<List<Problem>>(){}.getType();
                 List<Problem> list = gson.fromJson(jsonString, type);
                 problemsList.addAll(list);
-                System.out.println("pocet :" + problemsList.size());
                 recyclerViewAdapter.notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

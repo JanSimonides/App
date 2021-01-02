@@ -72,7 +72,7 @@ public class SolvingActivity extends AppCompatActivity {
                     String res = response.getText().toString().trim();
                     Float floatRes = Float.parseFloat(res);
                     Float floatSolution = Float.parseFloat(problem.getSolution().trim().replace(',', '.'));
-                    Toast.makeText(getApplicationContext(), "res: " + floatRes + " sol " + floatSolution, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "res: " + floatRes + " sol " + floatSolution, Toast.LENGTH_LONG).show();
                     if (floatRes.equals(floatSolution)) {
                         Toast.makeText(getApplicationContext(), "Správne", Toast.LENGTH_LONG).show();
                         problem.setResolved(true);
