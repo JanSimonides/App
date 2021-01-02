@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeTe</string>
+    <string name="start">Start</string>
+    <string name="solved">Solved</string>
+    <string name="unsolved">Unsolved</string>
+    <string name="welcome">Welcome in math course</string>
+    <string name="reset">Reset answers</string>
+    <string name="success">Answeres were reset</string>
+    <string name="back">Back to menu</string>
+    <string name="check">Check</string>
+</resources>
