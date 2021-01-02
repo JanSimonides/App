@@ -2,7 +2,10 @@ package umb.app.wete;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -35,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Locale myLocale = new Locale(getResources().getConfiguration().locale.getLanguage());
+        Locale.setDefault(myLocale);
+        Configuration config = new android.content.res.Configuration();
+        config.setLocale(myLocale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
